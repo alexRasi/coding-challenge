@@ -73,6 +73,6 @@ export class GeolocationApiService {
     /*
     For simplicity we consider there is always one View.
     */
-    return { lat: position.Latitude, lon: position.Longitude };
+    return { lat: position.Latitude.toString(), lon: position.Longitude.toString() };
   }
 }
