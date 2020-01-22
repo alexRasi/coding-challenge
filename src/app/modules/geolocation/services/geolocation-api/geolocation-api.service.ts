@@ -39,15 +39,19 @@ export class GeolocationApiService {
   }
 
   getRouteByCoordinates(
-    waypoint0: string,
-    waypoint1: string,
-    mode: string,
-    departure: string,
+    waypoint0Lat: string,
+    waypoint0Lon: string,
+    waypoint1Lat: string,
+    waypoint1Lon: string
   ): Observable<RouteResponseDTO> {
 
+    /* Harcoded mode and departure for simplicity */
+    const mode = 'fastest;car;traffic:enabled';
+    const departure = 'now';
+
     const params = new HttpParams()
-      .set('waypoint0', waypoint0.toString())
-      .set('waypoint1', waypoint1)
+      .set('waypoint0', waypoint0Lat + ',' + waypoint0Lon)
+      .set('waypoint1', waypoint1Lat + ',' + waypoint1Lon)
       .set('mode', mode)
       .set('departure', departure)
       .set('apiKey', environment.apiKey);
