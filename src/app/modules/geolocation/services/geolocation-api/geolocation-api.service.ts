@@ -4,9 +4,14 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { AddressDetailsResponseDTO } from 'src/app/domain/dtos/here-api-dtos/AddressDetailsResponseDTO';
+import { RouteResponseDTO } from 'src/app/domain/dtos/here-api-dtos/RouteResponseDTO';
+import { CoordinatesDTO } from 'src/app/domain/dtos/CoordinatesDTO';
 
 import { environment } from 'src/environments/environment';
-import { RouteResponseDTO } from 'src/app/domain/dtos/here-api-dtos/RouteResponseDTO';
+
+/*
+ * Integration with the HERE routing API
+ */
 
 @Injectable()
 export class GeolocationApiService {
@@ -48,5 +53,22 @@ export class GeolocationApiService {
       .set('apiKey', environment.apiKey);
 
     return this.httpClient.get<RouteResponseDTO>(this.routeByCoordinatesURL, { params });
+  }
+
+  getRouteResponseDistance(response: RouteResponseDTO): number {
+    /*
+    For simplicity we consider there is always one route.
+    They are sorted by distance
+    */
+    return response.response.route[0].summary.distance;
+  }
+
+  getAddressDetailsResponseCoordinates(response: AddressDetailsResponseDTO): CoordinatesDTO {
+    const position = response.Response.View[0].Result[0].Location.DisplayPosition;
+
+    /*
+    For simplicity we consider there is always one View.
+    */
+    return { lat: position.Latitude, lon: position.Longitude };
   }
 }
