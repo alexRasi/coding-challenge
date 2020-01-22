@@ -60,9 +60,17 @@ export class DataProcessingService {
     return get(value, path, fallback); // fallback to value if doesn't exist
   }
 
-  filterHousesWithNotAllTheData(houses: HouseDTO[]) {
+  filterHousesWithNotAllTheData(houses: HouseDTO[]): HouseDTO[] {
     // since we know that the only optional values are params, rooms and value
     return houses.filter(
       house => (house.params === undefined || house.params.rooms === undefined || house.params.value === undefined));
+  }
+
+  sortHousesByStreetName(houses: HouseDTO[]) {
+    return houses.sort((a, b) => {
+      if (a.street.toLocaleLowerCase() > b.street.toLocaleLowerCase()) {
+        return 1;
+      }
+    });
   }
 }
