@@ -52,11 +52,17 @@ export class DataProcessingService {
     return this.sortHouseDistanceArrayDescending(houseDistance)[1]; // because element 0 is the target house itself
   }
 
-  getHousesWithMoreThanRooms(houses: HouseDTO[], moreThan: number) {
+  filterHousesWithMoreThanRooms(houses: HouseDTO[], moreThan: number) {
     return houses.filter(house => this.getNestedValueSafely(house, 'params.rooms', -1) > moreThan);
   }
 
   getNestedValueSafely(value: any, path: string, fallback: any) {
     return get(value, path, fallback); // fallback to value if doesn't exist
+  }
+
+  filterHousesWithNotAllTheData(houses: HouseDTO[]) {
+    // since we know that the only optional values are params, rooms and value
+    return houses.filter(
+      house => (house.params === undefined || house.params.rooms === undefined || house.params.value === undefined));
   }
 }
