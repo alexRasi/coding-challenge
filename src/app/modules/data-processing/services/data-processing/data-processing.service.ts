@@ -5,6 +5,8 @@ import { GeolocationApiService } from 'src/app/modules/geolocation/services/geol
 import { Observable, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { get } from 'lodash';
+
 
 import { RouteResponseDTO } from 'src/app/domain/dtos/here-api-dtos/RouteResponseDTO';
 import { HouseDistance } from 'src/app/domain/dtos/Types/HouseDistance';
@@ -40,18 +42,21 @@ export class DataProcessingService {
     return houseDistance.sort((a, b) => a.distance - b.distance);
   }
 
+  sortHousesByRoomsDescending(houses: HouseDTO[]) {
+    return houses.sort((a, b) => {
+      return this.getNestedValueSafely(a, 'params.rooms', -1) - this.getNestedValueSafely(b, 'params.rooms', -1);
+    });
+  }
+
   getClosestHouseDistance(houseDistance: HouseDistance[]): HouseDistance {
     return this.sortHouseDistanceArrayDescending(houseDistance)[1]; // because element 0 is the target house itself
   }
 
   getHousesWithMoreThanRooms(houses: HouseDTO[], moreThan: number) {
-    return houses.filter(house => {
+    return houses.filter(house => this.getNestedValueSafely(house, 'params.rooms', -1) > moreThan);
+  }
 
-      if (house.params !== undefined && house.params.rooms !== undefined) {
-        return house.params.rooms > moreThan;
-      } else {
-        return false;
-      }
-    });
+  getNestedValueSafely(value: any, path: string, fallback: any) {
+    return get(value, path, fallback); // fallback to value if doesn't exist
   }
 }
