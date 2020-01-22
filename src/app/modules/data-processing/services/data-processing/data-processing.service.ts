@@ -14,7 +14,7 @@ export class DataProcessingService {
 
   constructor(private geolocationApiService: GeolocationApiService) { }
 
-  findHousesDistancesToCoordinates(targetCoordinates: CoordinatesDTO, houses: HouseDTO[]): Observable<HouseDistance[]> {
+  findHouseDistancesToCoordinates(targetCoordinates: CoordinatesDTO, houses: HouseDTO[]): Observable<HouseDistance[]> {
     const observablePool: Observable<HouseDistance>[] = [];
 
     houses.forEach(house => {
@@ -36,11 +36,22 @@ export class DataProcessingService {
     return { house, distance: routeResponse.response.route[0].summary.distance };
   }
 
-  sortHouseDistanceArrayDescending(houseDistance: HouseDistance[]) {
+  sortHouseDistanceArrayDescending(houseDistance: HouseDistance[]): HouseDistance[] {
     return houseDistance.sort((a, b) => a.distance - b.distance);
   }
 
   getClosestHouseDistance(houseDistance: HouseDistance[]): HouseDistance {
-    return houseDistance[1]; // because element 0 is the target house itself
+    return this.sortHouseDistanceArrayDescending(houseDistance)[1]; // because element 0 is the target house itself
+  }
+
+  getHousesWithMoreThanRooms(houses: HouseDTO[], moreThan: number) {
+    return houses.filter(house => {
+
+      if (house.params !== undefined && house.params.rooms !== undefined) {
+        return house.params.rooms > moreThan;
+      } else {
+        return false;
+      }
+    });
   }
 }
