@@ -39,4 +39,8 @@ export class DataProcessingService {
   sortHouseDistanceArrayDescending(houseDistance: HouseDistance[]) {
     return houseDistance.sort((a, b) => a.distance - b.distance);
   }
+
+  getClosestHouseDistance(houseDistance: HouseDistance[]): HouseDistance {
+    return houseDistance[1]; // because element 0 is the target house itself
+  }
 }
