@@ -35,4 +35,8 @@ export class DataProcessingService {
   mapToHouseWithDistance(house: HouseDTO, routeResponse: RouteResponseDTO): HouseDistance {
     return { house, distance: routeResponse.response.route[0].summary.distance };
   }
+
+  sortHouseDistanceArrayDescending(houseDistance: HouseDistance[]) {
+    return houseDistance.sort((a, b) => a.distance - b.distance);
+  }
 }
