@@ -86,6 +86,6 @@ export interface Response {
     View: View[];
 }
 
-export interface RootObject {
+export interface AddressDetailsResponseDTO {
     Response: Response;
 }
