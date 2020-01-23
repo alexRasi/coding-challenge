@@ -1,0 +1,27 @@
+<mat-card *ngIf="isTableVisible()">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef>Address </th>
+            <td mat-cell *matCellDef="let element"> {{ getNestedValueSafely(element, 'house.street', undefined)}} </td>
+        </ng-container>
+        <ng-container matColumnDef="rooms">
+            <th mat-header-cell *matHeaderCellDef>Rooms </th>
+            <td mat-cell *matCellDef="let element"> {{ getNestedValueSafely(element, 'house.params.rooms', undefined)}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef>Value </th>
+            <td mat-cell *matCellDef="let element"> {{ getNestedValueSafely(element, 'house.params.value', undefined)}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="distance">
+            <th mat-header-cell *matHeaderCellDef>Distance </th>
+            <td mat-cell *matCellDef="let element"> {{ getNestedValueSafely(element, 'distance', undefined)}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div class="w-100 d-flex flex-row-reverse">
+        <button mat-button color="primary" (click)="clearTable()">Clear</button>
+    </div>
+</mat-card>

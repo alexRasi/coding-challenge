@@ -7,6 +7,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
 
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -15,6 +17,7 @@ import { HousesNearAddressPageComponent } from './components/content-pages/house
 import { HousesLackingDataPageComponent } from './components/content-pages/houses-lacking-data-page/houses-lacking-data-page.component';
 // tslint:disable-next-line: max-line-length
 import { FilteredHousesByRoomsPageComponent } from './components/content-pages/filtered-houses-by-rooms-page/filtered-houses-by-rooms-page.component';
+import { HouseWithDistanceTableComponent } from './components/house-with-distance-table/house-with-distance-table.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { FilteredHousesByRoomsPageComponent } from './components/content-pages/f
     ToolbarComponent,
     HousesNearAddressPageComponent,
     FilteredHousesByRoomsPageComponent,
-    HousesLackingDataPageComponent
+    HousesLackingDataPageComponent,
+    HouseWithDistanceTableComponent
     ],
   imports: [
     CommonModule,
@@ -32,7 +36,9 @@ import { FilteredHousesByRoomsPageComponent } from './components/content-pages/f
     MatToolbarModule,
     MatTabsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatCardModule
   ],
   exports: [
     MainPageComponent
