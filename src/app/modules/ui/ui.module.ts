@@ -19,6 +19,7 @@ import { HousesLackingDataPageComponent } from './components/content-pages/house
 // tslint:disable-next-line: max-line-length
 import { FilteredHousesByRoomsPageComponent } from './components/content-pages/filtered-houses-by-rooms-page/filtered-houses-by-rooms-page.component';
 import { HouseWithDistanceTableComponent } from './components/house-with-distance-table/house-with-distance-table.component';
+import { HouseTableComponent } from './components/house-table/house-table.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HouseWithDistanceTableComponent } from './components/house-with-distanc
     HousesNearAddressPageComponent,
     FilteredHousesByRoomsPageComponent,
     HousesLackingDataPageComponent,
-    HouseWithDistanceTableComponent
+    HouseWithDistanceTableComponent,
+    HouseTableComponent
     ],
   imports: [
     CommonModule,
