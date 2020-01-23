@@ -73,4 +73,8 @@ export class DataProcessingService {
       }
     });
   }
+
+  applyFilterFunctionToHouses(houses: HouseDTO[], filterfunction): HouseDTO[] {
+    return houses.filter(filterfunction);
+  }
 }
