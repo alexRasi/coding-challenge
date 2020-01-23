@@ -57,9 +57,13 @@ export class HousesNearAddressPageComponent implements OnInit {
         houses
       ).subscribe(houseDistances => {
         houseDistances = this.dataProcessingService.sortHouseDistanceArrayDescending(houseDistances);
-        houseDistances.shift(); // the first one is our target house
+
+        if (this.houseIsYoursInput) {
+          houseDistances.shift(); // the first one is our target house
+        }
+
         this.sortedHouseDistancesResults = houseDistances;
-        
+
         this.progressSpinerService.hideSpinner();
       });
 
