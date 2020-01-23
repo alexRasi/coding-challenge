@@ -28,7 +28,10 @@ export class HousesNearAddressPageComponent implements OnInit {
   city = 'berlin';
   country = 'germany';
 
-  sortedHouseDistancesResults: HouseDistance[] = [];
+  // source of truth
+  houseDistancesResults: HouseDistance[] = [];
+
+  modifiedHouseDistancesResults: HouseDistance[] = [];
 
   constructor(
     private progressSpinerService: ProgressSpinerService,
@@ -62,12 +65,27 @@ export class HousesNearAddressPageComponent implements OnInit {
           houseDistances.shift(); // the first one is our target house
         }
 
-        this.sortedHouseDistancesResults = houseDistances;
+        this.houseDistancesResults = houseDistances;
+        this.modifiedHouseDistancesResults = houseDistances;
 
         this.progressSpinerService.hideSpinner();
       });
 
     });
+  }
+
+  applyFilters() {
+    this.modifiedHouseDistancesResults = this.dataProcessingService.filterHouseDistancesWithAllTheData(this.houseDistancesResults);
+
+    if (this.priceLimitInput !== undefined) {
+      this.modifiedHouseDistancesResults =
+        this.dataProcessingService.filterHouseDistancesByValueLimit(this.modifiedHouseDistancesResults, this.priceLimitInput);
+    }
+
+    if (this.roomsAtLeastInput !== undefined) {
+      this.modifiedHouseDistancesResults =
+        this.dataProcessingService.filterHouseDistancesByRoomsAtLeast(this.modifiedHouseDistancesResults, this.roomsAtLeastInput);
+    }
   }
 
   toggleFilters() {
