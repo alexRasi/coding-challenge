@@ -19,7 +19,7 @@ export class AppComponent {
     private housesFetchingService: HousesFetchingService,
     private geolocationService: GeolocationApiService) {
 
-    this.findAndSortHousesNearTo(55, 'Eberswalder  Straße', 'berlin', 'germany');
+    // this.findAndSortHousesNearTo(55, 'Eberswalder  Straße', 'berlin', 'germany');
 
     this.housesFetchingService.fetchAllHouses().subscribe(houseResponse => {
 

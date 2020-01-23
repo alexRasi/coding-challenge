@@ -6,6 +6,7 @@ import { GeolocationModule } from './modules/geolocation/geolocation.module';
 import { DataFetchingModule } from './modules/data-fetching/data-fetching.module';
 import { DataProcessingModule } from './modules/data-processing/data-processing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UiModule } from './modules/ui/ui.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GeolocationModule,
     DataFetchingModule,
     DataProcessingModule,
+    UiModule,
     BrowserAnimationsModule
   ],
   providers: [],
