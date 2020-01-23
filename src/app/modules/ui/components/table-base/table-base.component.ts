@@ -28,7 +28,6 @@ export class TableBaseComponent implements OnInit {
 
   isTableVisible() {
     if (this.dataSource) {
-      // console.log(this.dataSource.length);
       return this.dataSource.length === 0 ? false : true;
     }
     return false;

@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -20,6 +21,8 @@ import { HousesLackingDataPageComponent } from './components/content-pages/house
 import { FilteredHousesByRoomsPageComponent } from './components/content-pages/filtered-houses-by-rooms-page/filtered-houses-by-rooms-page.component';
 import { HouseWithDistanceTableComponent } from './components/house-with-distance-table/house-with-distance-table.component';
 import { HouseTableComponent } from './components/house-table/house-table.component';
+
+import { ProgressSpinerService } from './services/progress-spinner/progress-spiner.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,11 @@ import { HouseTableComponent } from './components/house-table/house-table.compon
     MatButtonModule,
     MatTableModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
+  ],
+  providers: [
+    ProgressSpinerService
   ],
   exports: [
     MainPageComponent

@@ -6,6 +6,7 @@ import { GeolocationApiService } from 'src/app/modules/geolocation/services/geol
 
 import { forkJoin } from 'rxjs';
 import { HouseDistance } from 'src/app/domain/dtos/Types/HouseDistance';
+import { ProgressSpinerService } from '../../../services/progress-spinner/progress-spiner.service';
 
 @Component({
   selector: 'app-houses-near-address-page',
@@ -30,6 +31,7 @@ export class HousesNearAddressPageComponent implements OnInit {
   sortedHouseDistancesResults: HouseDistance[] = [];
 
   constructor(
+    private progressSpinerService: ProgressSpinerService,
     private dataProcessingService: DataProcessingService,
     private housesFetchingService: HousesFetchingService,
     private geolocationService: GeolocationApiService) { }
@@ -38,7 +40,8 @@ export class HousesNearAddressPageComponent implements OnInit {
   }
 
   findAndSortHousesNearAddress() {
-    console.log('clicked');
+    this.progressSpinerService.showSpinner();
+
     const fixStreetEncoding = this.inputStreet.split(' ').join('+');
 
     forkJoin(
@@ -56,7 +59,8 @@ export class HousesNearAddressPageComponent implements OnInit {
         houseDistances = this.dataProcessingService.sortHouseDistanceArrayDescending(houseDistances);
         houseDistances.shift(); // the first one is our target house
         this.sortedHouseDistancesResults = houseDistances;
-
+        
+        this.progressSpinerService.hideSpinner();
       });
 
     });

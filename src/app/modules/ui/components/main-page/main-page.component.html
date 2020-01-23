@@ -1,2 +1,6 @@
 <app-toolbar></app-toolbar>
 <app-navigation></app-navigation>
+
+<mat-progress-spinner *ngIf="progressSpinerService.spinerVisibility" class="spinner" color="primary"
+    mode="indeterminate" value="50">
+</mat-progress-spinner>
