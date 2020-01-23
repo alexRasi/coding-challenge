@@ -74,6 +74,6 @@ export class DataProcessingService {
   }
 
   applyFilterFunctionToHouses(houses: HouseDTO[], filterfunction): HouseDTO[] {
-    return houses.filter(house => filterfunction);
+    return houses.filter(filterfunction);
   }
 }
