@@ -7,7 +7,6 @@ import { map } from 'rxjs/operators';
 
 import { get } from 'lodash';
 
-
 import { RouteResponseDTO } from 'src/app/domain/dtos/here-api-dtos/RouteResponseDTO';
 import { HouseDistance } from 'src/app/domain/dtos/Types/HouseDistance';
 
@@ -75,6 +74,6 @@ export class DataProcessingService {
   }
 
   applyFilterFunctionToHouses(houses: HouseDTO[], filterfunction): HouseDTO[] {
-    return houses.filter(filterfunction);
+    return houses.filter(house => filterfunction);
   }
 }
