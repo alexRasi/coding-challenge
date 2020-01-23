@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filtered-houses-by-rooms-page.component.css']
 })
 export class FilteredHousesByRoomsPageComponent implements OnInit {
+  rooms = 5;
 
   constructor() { }
 
