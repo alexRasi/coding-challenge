@@ -56,6 +56,7 @@ export class AppComponent {
         houseDistances = this.dataProcessingService.sortHouseDistanceArrayDescending(houseDistances);
         houseDistances.shift(); // the first one is our target house
 
+        console.log('--- List of Houses near to ' + street + ' ' + houseNumber )
         console.log(houseDistances);
 
         console.log('--- List of Houses with more 10 than rooms and cost more than 5.000.000€.');
