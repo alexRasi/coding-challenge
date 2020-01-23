@@ -1,4 +1,4 @@
 export interface CoordinatesDTO {
-    lat: number;
-    lon: number;
+    lat: string;
+    lon: string;
 }
