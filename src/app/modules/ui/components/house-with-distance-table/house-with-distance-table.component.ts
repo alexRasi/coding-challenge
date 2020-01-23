@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { get } from 'lodash';
+import { TableBaseComponent } from '../table-base/table-base.component';
 
 const housesWithDistanceArray = [
   {
@@ -131,25 +132,13 @@ const housesWithDistanceArray = [
   templateUrl: './house-with-distance-table.component.html',
   styleUrls: ['./house-with-distance-table.component.css']
 })
-export class HouseWithDistanceTableComponent implements OnInit {
+export class HouseWithDistanceTableComponent extends TableBaseComponent implements OnInit {
 
   displayedColumns: string[] = ['address', 'rooms', 'value', 'distance'];
   dataSource = housesWithDistanceArray;
 
-  constructor() { }
+  constructor() { super(); }
 
   ngOnInit() {
-  }
-
-  getNestedValueSafely(object: any, path: string, fallback: any) {
-    return get(object, path, fallback); // fallback to value if doesn't exist
-  }
-
-  clearTable() {
-    this.dataSource = [];
-  }
-
-  isTableVisible() {
-    return this.dataSource.length === 0 ? false : true;
   }
 }
