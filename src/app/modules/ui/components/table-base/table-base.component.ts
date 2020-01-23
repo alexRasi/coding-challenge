@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { get } from 'lodash';
 
 /*
@@ -9,7 +9,7 @@ import { get } from 'lodash';
 
 @Component({})
 export class TableBaseComponent implements OnInit {
-  dataSource: any[];
+  @Input()dataSource: any[];
 
   constructor() { }
 
@@ -21,10 +21,16 @@ export class TableBaseComponent implements OnInit {
   }
 
   clearTable() {
+    console.log(this.dataSource);
     this.dataSource = [];
+    console.log(this.dataSource);
   }
 
   isTableVisible() {
-    return this.dataSource.length === 0 ? false : true;
+    if (this.dataSource) {
+      // console.log(this.dataSource.length);
+      return this.dataSource.length === 0 ? false : true;
+    }
+    return false;
   }
 }

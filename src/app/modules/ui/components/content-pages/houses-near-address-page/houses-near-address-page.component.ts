@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataProcessingService } from 'src/app/modules/data-processing/services/data-processing/data-processing.service';
+import { HousesFetchingService } from 'src/app/modules/data-fetching/services/housesFetching/houses-fetching.service';
+import { GeolocationApiService } from 'src/app/modules/geolocation/services/geolocation-api/geolocation-api.service';
+
+import { forkJoin } from 'rxjs';
+import { HouseDistance } from 'src/app/domain/dtos/Types/HouseDistance';
+
 @Component({
   selector: 'app-houses-near-address-page',
   templateUrl: './houses-near-address-page.component.html',
@@ -16,13 +23,43 @@ export class HousesNearAddressPageComponent implements OnInit {
   roomsAtLeastInput = 10;
   priceLimitInput = 5000000;
 
-  constructor() { }
+  // hardcoded for simplicity
+  city = 'berlin';
+  country = 'germany';
+
+  sortedHouseDistancesResults: HouseDistance[] = [];
+
+  constructor(
+    private dataProcessingService: DataProcessingService,
+    private housesFetchingService: HousesFetchingService,
+    private geolocationService: GeolocationApiService) { }
 
   ngOnInit() {
   }
 
   findAndSortHousesNearAddress() {
+    console.log('clicked');
+    const fixStreetEncoding = this.inputStreet.split(' ').join('+');
 
+    forkJoin(
+      this.geolocationService.getGeocodeByAddress(this.inputNumber, fixStreetEncoding, this.city, this.country),
+      this.housesFetchingService.fetchAllHouses()
+    ).subscribe(obs => {
+      const address = obs[0];
+      const houses = obs[1].houses;
+
+      const addressCordinates = this.geolocationService.getAddressDetailsResponseCoordinates(address);
+      this.dataProcessingService.findHouseDistancesToCoordinates(
+        addressCordinates,
+        houses
+      ).subscribe(houseDistances => {
+        houseDistances = this.dataProcessingService.sortHouseDistanceArrayDescending(houseDistances);
+        houseDistances.shift(); // the first one is our target house
+        this.sortedHouseDistancesResults = houseDistances;
+
+      });
+
+    });
   }
 
   toggleFilters() {
