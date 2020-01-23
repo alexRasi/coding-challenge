@@ -9,13 +9,22 @@ export class HousesNearAddressPageComponent implements OnInit {
   inputStreet = 'Eberswalder Straße';
   inputNumber = 55;
 
+  filtersVisible = false;
+
+  roomsAtLeastInput = 10;
+  priceLimitInput = 5000000;
+
   constructor() { }
 
   ngOnInit() {
   }
 
   findAndSortHousesNearAddress() {
-    
+
+  }
+
+  toggleFilters() {
+    this.filtersVisible ? this.filtersVisible = false : this.filtersVisible = true;
   }
 
 }

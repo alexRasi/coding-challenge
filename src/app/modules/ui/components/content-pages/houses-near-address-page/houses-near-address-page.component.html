@@ -1,8 +1,20 @@
-<mat-form-field>
-    <input matInput placeholder="Street"  [(ngModel)]="inputStreet">
-</mat-form-field>
-<mat-form-field >
-  <input matInput placeholder="Number"  [(ngModel)]="inputNumber">
-</mat-form-field>
+<div>
+  <mat-form-field>
+    <input matInput placeholder="Street" [(ngModel)]="inputStreet">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Number" [(ngModel)]="inputNumber">
+  </mat-form-field>
+  <button (click)="findAndSortHousesNearAddress()" mat-raised-button color="primary">Find Houses</button>
+  <button (click)="toggleFilters()" class="ml-3" mat-button>Filters</button>
+</div>
 
-<button (click)="findAndSortHousesNearAddress()" mat-raised-button color="primary">Find Houses</button>
+<div *ngIf="filtersVisible">
+  <mat-form-field>
+    <input matInput placeholder="Rooms at least" [(ngModel)]="roomsAtLeastInput">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Price limit €" [(ngModel)]="priceLimitInput">
+  </mat-form-field>
+  <button (click)="applyFilters()" mat-raised-button color="primary">Apply</button>
+</div>
