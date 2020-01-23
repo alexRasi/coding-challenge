@@ -8,6 +8,9 @@
   <button (click)="findAndSortHousesNearAddress()" mat-raised-button color="primary">Find Houses</button>
   <button (click)="toggleFilters()" class="ml-3" mat-button>Filters</button>
 </div>
+<div class="ml-2 p-2">
+  <mat-checkbox [(ngModel)]="houseIsYoursInput">Above house is yours</mat-checkbox>
+</div>
 
 <div *ngIf="filtersVisible">
   <mat-form-field>

@@ -9,6 +9,8 @@ export class HousesNearAddressPageComponent implements OnInit {
   inputStreet = 'Eberswalder Straße';
   inputNumber = 55;
 
+  houseIsYoursInput = true;
+
   filtersVisible = false;
 
   roomsAtLeastInput = 10;

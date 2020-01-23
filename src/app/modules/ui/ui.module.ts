@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -38,7 +39,8 @@ import { HouseWithDistanceTableComponent } from './components/house-with-distanc
     MatIconModule,
     MatButtonModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatCheckboxModule
   ],
   exports: [
     MainPageComponent
