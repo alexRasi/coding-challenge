@@ -1,1 +1,8 @@
-<app-search-bar></app-search-bar>>
+<mat-form-field>
+    <input matInput placeholder="Street"  [(ngModel)]="inputStreet">
+</mat-form-field>
+<mat-form-field >
+  <input matInput placeholder="Number"  [(ngModel)]="inputNumber">
+</mat-form-field>
+
+<button (click)="findAndSortHousesNearAddress()" mat-raised-button color="primary">Find Houses</button>
