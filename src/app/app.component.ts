@@ -59,7 +59,7 @@ export class AppComponent {
         console.log('--- List of Houses near to ' + street + ' ' + houseNumber )
         console.log(houseDistances);
 
-        console.log('--- List of Houses with more 10 than rooms and cost more than 5.000.000€.');
+        console.log('--- List of Houses with more 10 than rooms and cost less than 5.000.000€.');
         const housesWithCriteria = this.findHousesWithCriteria(houses, 5000000, 10);
         console.log(housesWithCriteria);
       });
@@ -67,7 +67,7 @@ export class AppComponent {
     });
   }
 
-  findHousesWithCriteria(houses: HouseDTO[], priceMoreThan: number, roomsAtLeast: number) {
+  findHousesWithCriteria(houses: HouseDTO[], priceLessThan: number, roomsAtLeast: number) {
     return this.dataProcessingService.applyFilterFunctionToHouses(
       houses,
       (house: HouseDTO) => {
@@ -77,7 +77,7 @@ export class AppComponent {
             || house.params.value === undefined
           )
           && house.params.rooms >= roomsAtLeast
-          && house.params.value > priceMoreThan
+          && house.params.value < priceLessThan
         );
       }
     );
