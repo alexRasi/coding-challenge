@@ -1,5 +1,5 @@
 <mat-form-field>
-    <input matInput placeholder="Rooms" [(ngModel)]="rooms">
+    <input matInput placeholder="Rooms more than" [(ngModel)]="rooms">
 </mat-form-field>
-<button (click)="findAndSortHousesNearAddress()" mat-raised-button color="primary">Find Houses</button>
-<app-house-table></app-house-table>
+<button (click)="filterAndSort()" mat-raised-button color="primary">Find Houses</button>
+<app-house-table [dataSource]="modifiedHouses" ></app-house-table>
