@@ -54,6 +54,12 @@ export class HousesNearAddressPageComponent implements OnInit {
       const address = obs[0];
       const houses = obs[1].houses;
 
+      if (address.Response.View.length === 0) {
+        this.modifiedHouseDistancesResults = [];
+        this.progressSpinerService.hideSpinner();
+        return ;
+      }
+
       const addressCordinates = this.geolocationService.getAddressDetailsResponseCoordinates(address);
       this.dataProcessingService.findHouseDistancesToCoordinates(
         addressCordinates,
