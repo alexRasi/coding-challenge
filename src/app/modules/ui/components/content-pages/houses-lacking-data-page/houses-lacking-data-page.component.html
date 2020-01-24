@@ -1,4 +1,4 @@
 <div class="p-3">
-    <button (click)="findAndSortHousesNearAddress()" mat-raised-button color="primary">Find Houses</button>
+    <button (click)="fetchAndSortHousesLackingData()" mat-raised-button color="primary">Find Houses</button>
 </div>
-<app-house-table></app-house-table>
+<app-house-table [dataSource]="houses"></app-house-table>

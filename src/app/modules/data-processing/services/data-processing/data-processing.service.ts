@@ -65,6 +65,43 @@ export class DataProcessingService {
       house => (house.params === undefined || house.params.rooms === undefined || house.params.value === undefined));
   }
 
+  filterHouseDistancesWithAllTheData(houses: HouseDistance[]): HouseDistance[] {
+    // since we know that the only optional values are params, rooms and value
+    return houses.filter(
+      houseDistance => {
+        if (houseDistance.house.params === undefined) {
+          return false;
+        } else {
+          return !(houseDistance.house.params.rooms === undefined || houseDistance.house.params.value === undefined);
+        }
+      }
+    );
+  }
+
+  filterHousesByRoomsAtLeast(houses: HouseDTO[], roomsAtLeast: number): HouseDTO[] {
+    // since we know that the only optional values are params, rooms and value
+    return houses.filter(
+      house => (house.params.rooms > roomsAtLeast));
+  }
+
+  filterHousesByValueLimit(houses: HouseDTO[], valueLimit: number): HouseDTO[] {
+    // since we know that the only optional values are params, rooms and value
+    return houses.filter(
+      house => (house.params.value >= valueLimit));
+  }
+
+  filterHouseDistancesByRoomsAtLeast(houses: HouseDistance[], roomsAtLeast: number): HouseDistance[] {
+    // since we know that the only optional values are params, rooms and value
+    return houses.filter(
+      houseDistance => (houseDistance.house.params.rooms > roomsAtLeast));
+  }
+
+  filterHouseDistancesByValueLimit(houses: HouseDistance[], valueLimit: number): HouseDistance[] {
+    // since we know that the only optional values are params, rooms and value
+    return houses.filter(
+      houseDistances => (houseDistances.house.params.value <= valueLimit));
+  }
+
   sortHousesByStreetName(houses: HouseDTO[]) {
     return houses.sort((a, b) => {
       if (a.street.toLocaleLowerCase() > b.street.toLocaleLowerCase()) {
@@ -72,6 +109,7 @@ export class DataProcessingService {
       }
     });
   }
+
 
   applyFilterFunctionToHouses(houses: HouseDTO[], filterfunction): HouseDTO[] {
     return houses.filter(filterfunction);

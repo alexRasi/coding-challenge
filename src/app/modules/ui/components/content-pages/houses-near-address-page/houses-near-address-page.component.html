@@ -11,7 +11,6 @@
 <div class="ml-2 p-2">
   <mat-checkbox [(ngModel)]="houseIsYoursInput">Above house is yours</mat-checkbox>
 </div>
-
 <div *ngIf="filtersVisible">
   <mat-form-field>
     <input matInput placeholder="Rooms at least" [(ngModel)]="roomsAtLeastInput">
@@ -21,5 +20,4 @@
   </mat-form-field>
   <button (click)="applyFilters()" mat-raised-button color="primary">Apply</button>
 </div>
-
-<app-house-with-distance-table></app-house-with-distance-table>
+<app-house-with-distance-table [dataSource]="modifiedHouseDistancesResults"></app-house-with-distance-table>
