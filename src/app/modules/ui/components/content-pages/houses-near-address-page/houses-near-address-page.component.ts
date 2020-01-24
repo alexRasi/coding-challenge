@@ -3,10 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { DataProcessingService } from 'src/app/modules/data-processing/services/data-processing/data-processing.service';
 import { HousesFetchingService } from 'src/app/modules/data-fetching/services/housesFetching/houses-fetching.service';
 import { GeolocationApiService } from 'src/app/modules/geolocation/services/geolocation-api/geolocation-api.service';
+import { ProgressSpinerService } from '../../../services/progress-spinner/progress-spiner.service';
 
 import { forkJoin } from 'rxjs';
+
 import { HouseDistance } from 'src/app/domain/dtos/Types/HouseDistance';
-import { ProgressSpinerService } from '../../../services/progress-spinner/progress-spiner.service';
 
 @Component({
   selector: 'app-houses-near-address-page',
