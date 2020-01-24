@@ -21,9 +21,7 @@ export class TableBaseComponent implements OnInit {
   }
 
   clearTable() {
-    console.log(this.dataSource);
     this.dataSource = [];
-    console.log(this.dataSource);
   }
 
   isTableVisible() {
