@@ -21,8 +21,9 @@ export class HousesNearAddressPageComponent {
 
   filtersVisible = false;
 
-  roomsAtLeastInput = 10;
-  priceLimitInput = 5000000;
+  // strings instead of numbers for empty input handling
+  roomsAtLeastInput = '10';
+  priceLimitInput = '5000000';
 
   // hardcoded for simplicity
   city = 'berlin';
@@ -80,14 +81,14 @@ export class HousesNearAddressPageComponent {
   applyFilters() {
     this.modifiedHouseDistancesResults = this.dataProcessingService.filterHouseDistancesWithAllTheData(this.houseDistancesResults);
 
-    if (this.priceLimitInput !== undefined) {
+    if (this.inputValueIsNotEmpty(this.priceLimitInput)) {
       this.modifiedHouseDistancesResults =
-        this.dataProcessingService.filterHouseDistancesByValueLimit(this.modifiedHouseDistancesResults, this.priceLimitInput);
+        this.dataProcessingService.filterHouseDistancesByValueLimit(this.modifiedHouseDistancesResults, +this.priceLimitInput);
     }
 
-    if (this.roomsAtLeastInput !== undefined) {
+    if (this.inputValueIsNotEmpty(this.roomsAtLeastInput)) {
       this.modifiedHouseDistancesResults =
-        this.dataProcessingService.filterHouseDistancesByRoomsAtLeast(this.modifiedHouseDistancesResults, this.roomsAtLeastInput);
+        this.dataProcessingService.filterHouseDistancesByRoomsAtLeast(this.modifiedHouseDistancesResults, +this.roomsAtLeastInput);
     }
   }
 
@@ -95,4 +96,7 @@ export class HousesNearAddressPageComponent {
     this.filtersVisible ? this.filtersVisible = false : this.filtersVisible = true;
   }
 
+  inputValueIsNotEmpty(val: string) {
+    return val !== undefined && val !== '';
+  }
 }
