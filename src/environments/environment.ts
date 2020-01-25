@@ -2,9 +2,16 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+
+/*
+   The interfaceMA demo link is replaced with a JSON storage API
+   in order to avoid CORS errors
+ */
+
 export const environment = {
   production: false,
-  apiKey: 'DrteCs7N1f02IBSSSuSjLMPwd-wvuouVrtVv-RJISlE'
+  apiKey: 'DrteCs7N1f02IBSSSuSjLMPwd-wvuouVrtVv-RJISlE',
+  houseFetchingEndpoint: 'https://api.myjson.com/bins/12cncy' // https://demo.interfacema.de/programming-assessment-1.0/buildings
 };
 
 /*
