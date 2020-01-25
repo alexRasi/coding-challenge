@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { DataProcessingService } from 'src/app/modules/data-processing/services/data-processing/data-processing.service';
 import { HousesFetchingService } from 'src/app/modules/data-fetching/services/housesFetching/houses-fetching.service';
@@ -9,10 +9,9 @@ import { HouseDTO } from 'src/app/domain/dtos/HouseDTO';
 
 @Component({
   selector: 'app-filtered-houses-by-rooms-page',
-  templateUrl: './filtered-houses-by-rooms-page.component.html',
-  styleUrls: ['./filtered-houses-by-rooms-page.component.css']
+  templateUrl: './filtered-houses-by-rooms-page.component.html'
 })
-export class FilteredHousesByRoomsPageComponent implements OnInit {
+export class FilteredHousesByRoomsPageComponent {
   rooms = 5;
 
   housesResponse: HousesResponseDTO;
@@ -22,9 +21,6 @@ export class FilteredHousesByRoomsPageComponent implements OnInit {
     private progressSpinerService: ProgressSpinerService,
     private dataProcessingService: DataProcessingService,
     private housesFetchingService: HousesFetchingService) { }
-
-  ngOnInit() {
-  }
 
   filterAndSort() {
     this.progressSpinerService.showSpinner();

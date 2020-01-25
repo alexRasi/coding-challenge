@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProgressSpinerService } from '../../services/progress-spinner/progress-spiner.service';
 
 @Component({
@@ -6,11 +6,8 @@ import { ProgressSpinerService } from '../../services/progress-spinner/progress-
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css']
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent {
 
   constructor(private progressSpinerService: ProgressSpinerService) { }
-
-  ngOnInit() {
-  }
 
 }
