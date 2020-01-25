@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { ProgressSpinerService } from '../../../services/progress-spinner/progress-spiner.service';
 import { DataProcessingService } from 'src/app/modules/data-processing/services/data-processing/data-processing.service';
@@ -8,10 +8,9 @@ import { HouseDTO } from 'src/app/domain/dtos/HouseDTO';
 
 @Component({
   selector: 'app-houses-lacking-data-page',
-  templateUrl: './houses-lacking-data-page.component.html',
-  styleUrls: ['./houses-lacking-data-page.component.css']
+  templateUrl: './houses-lacking-data-page.component.html'
 })
-export class HousesLackingDataPageComponent implements OnInit {
+export class HousesLackingDataPageComponent {
 
   houses: HouseDTO[];
 
@@ -19,9 +18,6 @@ export class HousesLackingDataPageComponent implements OnInit {
     private progressSpinerService: ProgressSpinerService,
     private dataProcessingService: DataProcessingService,
     private housesFetchingService: HousesFetchingService) { }
-
-  ngOnInit() {
-  }
 
   fetchAndSortHousesLackingData() {
 

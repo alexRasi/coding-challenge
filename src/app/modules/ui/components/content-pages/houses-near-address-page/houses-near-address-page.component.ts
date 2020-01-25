@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { DataProcessingService } from 'src/app/modules/data-processing/services/data-processing/data-processing.service';
 import { HousesFetchingService } from 'src/app/modules/data-fetching/services/housesFetching/houses-fetching.service';
@@ -11,10 +11,9 @@ import { HouseDistance } from 'src/app/domain/dtos/Types/HouseDistance';
 
 @Component({
   selector: 'app-houses-near-address-page',
-  templateUrl: './houses-near-address-page.component.html',
-  styleUrls: ['./houses-near-address-page.component.css']
+  templateUrl: './houses-near-address-page.component.html'
 })
-export class HousesNearAddressPageComponent implements OnInit {
+export class HousesNearAddressPageComponent {
   inputStreet = 'Eberswalder Straße';
   inputNumber = 55;
 
@@ -39,9 +38,6 @@ export class HousesNearAddressPageComponent implements OnInit {
     private dataProcessingService: DataProcessingService,
     private housesFetchingService: HousesFetchingService,
     private geolocationService: GeolocationApiService) { }
-
-  ngOnInit() {
-  }
 
   findAndSortHousesNearAddress() {
     this.progressSpinerService.showSpinner();

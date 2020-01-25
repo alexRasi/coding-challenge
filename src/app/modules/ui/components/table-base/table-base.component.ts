@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { get } from 'lodash';
 
 /*
@@ -8,13 +8,8 @@ import { get } from 'lodash';
 */
 
 @Component({})
-export class TableBaseComponent implements OnInit {
+export class TableBaseComponent {
   @Input()dataSource: any[];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   getNestedValueSafely(object: any, path: string, fallback: any) {
     return get(object, path, fallback); // fallback to value if doesn't exist

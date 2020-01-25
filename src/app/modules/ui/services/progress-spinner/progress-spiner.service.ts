@@ -5,8 +5,6 @@ export class ProgressSpinerService {
 
   public spinerVisibility = false;
 
-  constructor() { }
-
   showSpinner() {
     this.spinerVisibility = true;
   }
