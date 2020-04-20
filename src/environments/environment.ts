@@ -11,7 +11,7 @@
 export const environment = {
   production: false,
   apiKey: 'DrteCs7N1f02IBSSSuSjLMPwd-wvuouVrtVv-RJISlE',
-  houseFetchingEndpoint: 'https://api.myjson.com/bins/12cncy' // https://demo.interfacema.de/programming-assessment-1.0/buildings
+  houseFetchingEndpoint: 'https://demo.interfacema.de/programming-assessment-1.0/buildings'
 };
 
 /*
